@@ -1,9 +1,28 @@
-import example.pepita
+import example.*
 
 describe "group of tests for pepita" {
+  var lucas = new Persona(edad = 20)
+  var marcos = new Persona(edad = 20)
+  var cris = new Persona(edad = 20, recursos = 40)
+  var gusti = new Persona(edad = 15)
+  var planeta1 = new Planeta()
+  var muralla1 = new Muralla(longitud = 3)
+  var muralla2 = new Muralla(longitud = 4)
+  var museo1 = new Museo(superficie = 2, indiceImportancia = 2)
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+
+  test "primer Test" {
+    planeta1.agregarHabitante(lucas)
+    planeta1.agregarHabitante(marcos)
+    planeta1.agregarHabitante(cris)
+    planeta1.agregarHabitante(gusti)
+    planeta1.agregarConstruccion(muralla1)
+    planeta1.agregarConstruccion(muralla2)
+    planeta1.agregarConstruccion(museo1)
+    assert.that(planeta1.delegacionDiplomatica().contains(lucas))
+    assert.that(planeta1.delegacionDiplomatica().contains(marcos))
+    assert.that(planeta1.delegacionDiplomatica().contains(cris))
+    assert.notThat(planeta1.delegacionDiplomatica().contains(gusti))
   }
 
 }
